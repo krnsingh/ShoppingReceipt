@@ -1,16 +1,17 @@
 package com.receipt.calculator.service;
 
-import com.receipt.calculator.Item;
+import com.receipt.calculator.model.Item;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 public class TwoForOnePound implements Offer {
 
     @Override
     public BigDecimal calculateSaving(final Item item, final Float quantity) {
-        final BigDecimal savingFactor = BigDecimal.valueOf(quantity / 2).setScale(0, RoundingMode.DOWN);
-        return savingFactor.multiply(item.getPricePerUnit());
+        float quantityForSaving = quantity - (quantity % 2);
+        final BigDecimal costAfterSaving = BigDecimal.valueOf(quantityForSaving / 2);
+        final BigDecimal costBeforeSaving = BigDecimal.valueOf(quantityForSaving).multiply(item.getPricePerUnit());
+        return costBeforeSaving.subtract(costAfterSaving);
     }
 
 }

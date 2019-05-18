@@ -1,6 +1,6 @@
 package com.receipt.calculator.service;
 
-import com.receipt.calculator.Item;
+import com.receipt.calculator.model.Item;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -23,7 +23,7 @@ public class TwoForOnePoundTest {
         final BigDecimal savings = twoForOnePound.calculateSaving(item, totalQuantity);
 
         //Then
-        assertThat(savings, is(BigDecimal.valueOf(0.0)));
+        assertThat(savings, is(BigDecimal.valueOf(0.0).setScale(2)));
     }
 
     @Test
@@ -38,7 +38,7 @@ public class TwoForOnePoundTest {
         final BigDecimal savings = twoForOnePound.calculateSaving(item, totalQuantity);
 
         //Then
-        assertThat(savings, is(pricePerUnit));
+        assertThat(savings, is(BigDecimal.valueOf(0.60).setScale(2)));
     }
 
     @Test
@@ -53,7 +53,7 @@ public class TwoForOnePoundTest {
         final BigDecimal savings = twoForOnePound.calculateSaving(item, totalQuantity);
 
         //Then
-        assertThat(savings, is(pricePerUnit));
+        assertThat(savings, is(BigDecimal.valueOf(0.60).setScale(2)));
     }
 
     @Test
@@ -68,7 +68,7 @@ public class TwoForOnePoundTest {
         final BigDecimal savings = twoForOnePound.calculateSaving(item, totalQuantity);
 
         //Then
-        assertThat(savings, is(pricePerUnit.multiply(BigDecimal.valueOf(2))));
+        assertThat(savings, is(BigDecimal.valueOf(1.20).setScale(2)));
     }
 
 }
