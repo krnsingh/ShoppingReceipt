@@ -11,6 +11,36 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ThreeForTwoTest {
 
     @Test
+    public void quantityOfOneShouldSavePriceOfZero() {
+        //Given
+        final Offer threeForTwo = new ThreeForTwo();
+        final BigDecimal pricePerUnit = BigDecimal.valueOf(1.0);
+        final Float totalQuantity = 1f;
+        final Item item = new Item("Coke 330ml", pricePerUnit);
+
+        //When
+        final BigDecimal savings = threeForTwo.calculateSaving(item, totalQuantity);
+
+        //Then
+        assertThat(savings, is(BigDecimal.valueOf(0.0)));
+    }
+
+    @Test
+    public void quantityOfTwoShouldSavePriceOfZero() {
+        //Given
+        final Offer threeForTwo = new ThreeForTwo();
+        final BigDecimal pricePerUnit = BigDecimal.valueOf(1.0);
+        final Float totalQuantity = 2f;
+        final Item item = new Item("Coke 330ml", pricePerUnit);
+
+        //When
+        final BigDecimal savings = threeForTwo.calculateSaving(item, totalQuantity);
+
+        //Then
+        assertThat(savings, is(BigDecimal.valueOf(0.0)));
+    }
+
+    @Test
     public void quantityOfThreeShouldSavePriceOfOne() {
         //Given
         final Offer threeForTwo = new ThreeForTwo();
