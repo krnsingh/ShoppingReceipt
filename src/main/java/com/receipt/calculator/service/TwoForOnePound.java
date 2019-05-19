@@ -14,4 +14,9 @@ public class TwoForOnePound implements Offer {
         return costBeforeSaving.subtract(costAfterSaving);
     }
 
+    @Override
+    public String receiptLabel() {
+        return "2 for £1";
+    }
+
 }
