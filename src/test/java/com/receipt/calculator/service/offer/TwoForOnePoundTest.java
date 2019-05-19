@@ -1,6 +1,8 @@
-package com.receipt.calculator.service;
+package com.receipt.calculator.service.offer;
 
 import com.receipt.calculator.model.Item;
+import com.receipt.calculator.service.offer.Offer;
+import com.receipt.calculator.service.offer.TwoForOnePound;
 import org.junit.Test;
 
 import java.math.BigDecimal;

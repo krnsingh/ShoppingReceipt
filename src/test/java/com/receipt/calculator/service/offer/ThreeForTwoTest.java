@@ -1,6 +1,8 @@
-package com.receipt.calculator.service;
+package com.receipt.calculator.service.offer;
 
-import com.receipt.calculator.Item;
+import com.receipt.calculator.model.Item;
+import com.receipt.calculator.service.offer.Offer;
+import com.receipt.calculator.service.offer.ThreeForTwo;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -22,7 +24,7 @@ public class ThreeForTwoTest {
         final BigDecimal savings = threeForTwo.calculateSaving(item, totalQuantity);
 
         //Then
-        assertThat(savings, is(BigDecimal.valueOf(0.0)));
+        assertThat(savings, is(BigDecimal.valueOf(0).setScale(2)));
     }
 
     @Test
@@ -37,7 +39,7 @@ public class ThreeForTwoTest {
         final BigDecimal savings = threeForTwo.calculateSaving(item, totalQuantity);
 
         //Then
-        assertThat(savings, is(BigDecimal.valueOf(0.0)));
+        assertThat(savings, is(BigDecimal.valueOf(0.0).setScale(2)));
     }
 
     @Test
@@ -52,7 +54,7 @@ public class ThreeForTwoTest {
         final BigDecimal savings = threeForTwo.calculateSaving(item, totalQuantity);
 
         //Then
-        assertThat(savings, is(pricePerUnit));
+        assertThat(savings, is(pricePerUnit.setScale(2)));
     }
 
     @Test
@@ -67,7 +69,7 @@ public class ThreeForTwoTest {
         final BigDecimal savings = threeForTwo.calculateSaving(item, totalQuantity);
 
         //Then
-        assertThat(savings, is(pricePerUnit.multiply(BigDecimal.valueOf(2))));
+        assertThat(savings, is(pricePerUnit.multiply(BigDecimal.valueOf(2)).setScale(2)));
     }
 
     @Test
@@ -82,7 +84,7 @@ public class ThreeForTwoTest {
         final BigDecimal savings = threeForTwo.calculateSaving(item, totalQuantity);
 
         //Then
-        assertThat(savings, is(pricePerUnit.multiply(BigDecimal.valueOf(3))));
+        assertThat(savings, is(pricePerUnit.multiply(BigDecimal.valueOf(3)).setScale(2)));
     }
 
     @Test
@@ -97,7 +99,7 @@ public class ThreeForTwoTest {
         final BigDecimal savings = threeForTwo.calculateSaving(item, totalQuantity);
 
         //Then
-        assertThat(savings, is(pricePerUnit.multiply(BigDecimal.valueOf(3))));
+        assertThat(savings, is(pricePerUnit.multiply(BigDecimal.valueOf(3)).setScale(2)));
     }
 
     @Test
@@ -112,7 +114,7 @@ public class ThreeForTwoTest {
         final BigDecimal savings = threeForTwo.calculateSaving(item, totalQuantity);
 
         //Then
-        assertThat(savings, is(pricePerUnit.multiply(BigDecimal.valueOf(3))));
+        assertThat(savings, is(pricePerUnit.multiply(BigDecimal.valueOf(3)).setScale(2)));
     }
 
     @Test
@@ -127,7 +129,7 @@ public class ThreeForTwoTest {
         final BigDecimal savings = threeForTwo.calculateSaving(item, totalQuantity);
 
         //Then
-        assertThat(savings, is(pricePerUnit.multiply(BigDecimal.valueOf(4))));
+        assertThat(savings, is(pricePerUnit.multiply(BigDecimal.valueOf(4)).setScale(2)));
     }
 
 }

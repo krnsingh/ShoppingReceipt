@@ -1,6 +1,7 @@
-package com.receipt.calculator;
+package com.receipt.calculator.model;
 
 import com.receipt.calculator.exception.InvalidItemNameException;
+import com.receipt.calculator.model.Item;
 import org.junit.Test;
 
 import java.math.BigDecimal;

@@ -1,4 +1,4 @@
-package com.receipt.calculator.service;
+package com.receipt.calculator.service.offer;
 
 import com.receipt.calculator.model.Item;
 

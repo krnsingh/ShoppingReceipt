@@ -1,4 +1,4 @@
-package com.receipt.calculator.service;
+package com.receipt.calculator.service.offer;
 
 import com.receipt.calculator.model.Item;
 
@@ -10,7 +10,7 @@ public class ThreeForTwo implements Offer {
     @Override
     public BigDecimal calculateSaving(final Item item, final Float quantity) {
         final BigDecimal savingFactor = BigDecimal.valueOf(quantity / 3).setScale(0, RoundingMode.DOWN);
-        return savingFactor.multiply(item.getPricePerUnit());
+        return savingFactor.multiply(item.getPricePerUnit()).setScale(2, RoundingMode.HALF_UP);
     }
 
     @Override

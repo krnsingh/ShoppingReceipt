@@ -34,4 +34,9 @@ public class ReceiptItem {
     public int hashCode() {
         return Objects.hash(label, amount);
     }
+
+    @Override
+    public String toString() {
+        return label + " -  £" + amount;
+    }
 }

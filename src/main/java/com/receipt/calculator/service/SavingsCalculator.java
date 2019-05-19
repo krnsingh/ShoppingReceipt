@@ -1,7 +1,10 @@
 package com.receipt.calculator.service;
 
+import com.receipt.calculator.model.CartItem;
 import com.receipt.calculator.model.Item;
 import com.receipt.calculator.model.ReceiptItem;
+import com.receipt.calculator.service.offer.ItemsOnOffer;
+import com.receipt.calculator.service.offer.Offer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,17 +15,19 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class SavingsCalculator {
 
-    public List<ReceiptItem> calculate(final List<Item> cartItems, final ItemsOnOffer itemsOnOffer) {
+    public List<ReceiptItem> calculate(final List<CartItem> cartItems, final ItemsOnOffer itemsOnOffer) {
         final List<ReceiptItem> savingItems = new ArrayList<>();
-        final Map<Item, Long> countsByItem = cartItems.stream().collect(groupingBy(item -> item, Collectors.counting()));
-        countsByItem.forEach((item, quantity) ->
+
+        Map<Item, Double> quantitiesByItem = cartItems.stream().collect(groupingBy(CartItem::getItem, Collectors.summingDouble(CartItem::getQuantity)));
+
+        quantitiesByItem.forEach((item, quantity) ->
                 itemsOnOffer.getOfferForItem(item)
                         .ifPresent(offer ->
-                                savingItems.add(calculateOfferSavingAndCreateReceiptItem(item, quantity, offer))));
+                                savingItems.add(calculateOfferSavingAndCreateReceiptItem(item, quantity.floatValue(), offer))));
         return savingItems;
     }
 
-    private ReceiptItem calculateOfferSavingAndCreateReceiptItem(Item item, Long quantity, Offer offer) {
+    private ReceiptItem calculateOfferSavingAndCreateReceiptItem(Item item, Float quantity, Offer offer) {
         return new ReceiptItem(item.getName() + offer.receiptLabel(),
                 offer.calculateSaving(item, Float.valueOf(quantity)));
     }
