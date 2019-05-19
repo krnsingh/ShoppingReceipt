@@ -25,7 +25,7 @@ For Example
 To change the cart, go to `ReceiptApplication` class and modify `generateCartItems` and 
 `generateOffersOnItems` methods and repeat steps 2 & 3 mentioned above.
 
-##Brief explanation of code structure
+## Brief explanation of code structure
 
 Model Classes
 * `Item` -> Represent shopping item with unique name and price.
